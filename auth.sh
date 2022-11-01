@@ -1,6 +1,14 @@
 #!/bin/bash
 
-auth_server=https://github.com/TomLyon.keys
+#SSH Authorization Server Script via Github
+#---
+#This script utilizies AuthorizedKeysCommand in sshd_config to
+#authorize clients by utilizing githubs public keys. Simply upload
+#a new key to github to authorize a client to your servers.
+#
+
+github_user=USERNAME
+auth_server=https://github.com/$github_user.keys
 key_paths=/root/.ssh/authorized_keys2,/home/user1/.ssh/authorized_keys2 # Comma Seperated Paths
 
 keys=$(curl -s $auth_server)
